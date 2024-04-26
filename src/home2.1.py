@@ -13,11 +13,13 @@ if __name__ == '__main__':
 
         random_dicts_list.append(dict(zip(keys, values)))  # Combine keys and values into a dictionary
 
+    print(random_dicts_list)
+
     merged_dict = {}
     for i in range(len(random_dicts_list)):  # merges all dictionaries in one
         dct = random_dicts_list[i]
         for x in dct.keys():
-            merged_dict[f"{x}-{i + 1}"] = dct[i]  # adds index(it means the dictionary number in the list) to the key
+            merged_dict[f"{x}-{i + 1}"] = dct[x]  # adds index(it means the dictionary number in the list) to the key
     print(merged_dict)
 
     filtered_dict = {}
