@@ -2,7 +2,7 @@ import random
 import string
 
 
-# lst = [{"a": 1, "b": 2}, {"a": 3, "b": 0}, {"a": 4, "b": 0, "c": 7, }]
+
 def create_random_dicts_list():
     random_dicts_list = []
     num_dicts = random.randint(2, 10)
