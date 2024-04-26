@@ -19,13 +19,17 @@ if __name__ == '__main__':
     for i in range(len(random_dicts_list)):  # merges all dictionaries in one
         dct = random_dicts_list[i]
         for x in dct.keys():
-            merged_dict[f"{x}-{i + 1}"] = dct[x]  # adds index(it means the dictionary number in the list) to the key
+            merged_dict[f"{x}_{i + 1}"] = dct[x]  # adds index(it means the dictionary number in the list) to the key
     print(merged_dict)
 
     filtered_dict = {}
     for k in merged_dict:  # sorts the dictionary by selecting the greatest value for each key-letter
         common_key = k[0]
         common_dict = {key: val for key, val in merged_dict.items() if key.startswith(common_key)}
+        if len(common_dict) == 1:
+            value = common_dict.get(k)
+            common_dict.clear()
+            common_dict[common_key] = value
         sorted_common_dict = sorted(common_dict.items(), key=lambda x: x[
             1])  # sorts the items of common_dict and assigns the result to sorted_common_dict
         max_key_value = list(sorted_common_dict)[
