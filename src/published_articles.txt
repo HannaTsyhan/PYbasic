@@ -1,0 +1,13 @@
+news----------------
+Parliament passed a new law
+London,2024-05-02 13:14-43
+
+advertising----------------
+Best goods for healthcare
+Actual until: 2025-01-01, 244 days left
+
+weather forecast----------------
+Weather forecast for tomorrow
+Northern Europe
+The weather will be fine tomorrow: False
+
