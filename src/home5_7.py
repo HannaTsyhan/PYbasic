@@ -223,9 +223,9 @@ class WordsLettersCounter:
                 else:
                     letter_dict[char] = letter_dict.get(char, 0) + 1
 
-        with open("letters_count.csv", 'w', newline='') as csw_file:
+        with open("letters_count.csv", 'w', newline='') as csv_file:
             headers = ['letter', 'count_all', 'count_uppercase', 'percentage']
-            writer = csv.writer(csw_file)
+            writer = csv.writer(csv_file)
             writer.writerow(headers)
             for letter, count in sorted(letter_dict.items()):
                 writer.writerow([letter, str(count), str(upper_letter_dict.get(letter.upper(), 0)),
