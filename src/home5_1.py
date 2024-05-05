@@ -48,7 +48,7 @@ class WeatherForecast(Article):
         return f'The weather will be fine tomorrow: {forecast}'
 
 
-class ArticleCreator():
+class ArticleCreator:
 
     def generate_article(self):
         feed_type = self.input_feed_type()
@@ -67,7 +67,11 @@ class ArticleCreator():
             return WeatherForecast("weather forecast", text, region)
 
     def input_feed_type(self):
-        return input("Enter feed type: ")
+        feed_type = input("Enter feed type: ")
+        while feed_type not in ("news", "1", "advertising", "2", "weather forecast", "3"):
+            print("This feed type does not exist. Please enter feed type: news, advertising, weather forecast:")
+            return self.input_feed_type()
+        return feed_type
 
     def input_text(self):
         return input("Enter text: ")
@@ -82,17 +86,22 @@ class ArticleCreator():
         return input("Enter region: ")
 
 
-class Publisher():
+class Publisher:
 
-    def __init__(self, article):
+    def __init__(self, article, file_name):
         self.article = article
-        self.__file_name = ""
+        self.__file_name = file_name
 
-    def get_file_name(self):
+    @property
+    def file_name(self):
         return self.__file_name
 
-    def set_file_name(self, value):
-        self.__file_name = value
+    @file_name.setter
+    def file_name(self, value):
+        if value == "":
+            self.__file_name = "published_articles.txt"
+        else:
+            self.__file_name = value
 
     def publish_article(self):
         publication = ""
@@ -118,7 +127,6 @@ class Publisher():
 if __name__ == '__main__':
     article_creator = ArticleCreator()
     article = article_creator.generate_article()
-    publisher = Publisher(article)
-    if publisher.get_file_name() == "":
-        publisher.set_file_name("published_articles.txt")
+    publisher = Publisher(article, "wrong.txt")
+    publisher.file_name = "published_articles.txt"
     publisher.publish_article()

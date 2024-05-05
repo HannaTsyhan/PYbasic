@@ -229,8 +229,10 @@ class WordsLettersCounter:
             writer.writerow(headers)
             for letter, count in sorted(letter_dict.items()):
                 writer.writerow([letter, str(count), str(upper_letter_dict.get(letter.upper(), 0)),
-                                 str(round(count/letter_counter*100, 2))])
-
+                                 str(round((count + upper_letter_dict.get(letter.upper(), 0))/letter_counter*100, 2))])
+        print(letter_counter)
+        print(letter_dict)
+        print(upper_letter_dict)
 
 if __name__ == '__main__':
     input_switcher = InputSwitcher()
